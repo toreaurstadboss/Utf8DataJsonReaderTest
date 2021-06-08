@@ -9,6 +9,36 @@ namespace SystemTextJsonTestRun
     public static class Utf8JsonReaderSerializer
     {
 
+        public static bool IsValidFile(string filePath)
+        {
+            try
+            {
+                string json = ReadFile(filePath);
+                return !string.IsNullOrEmpty(json);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool IsValidFile(string filePath, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+            try
+            {
+                string json = ReadFile(filePath);
+                return !string.IsNullOrEmpty(json);
+            }
+            catch (JsonException err)
+            {
+                errorMessage = err.Message;
+                return false;
+            }
+        }
+
+
+
         public static string ReadFile(string filePath)
         {         
             if (!File.Exists(filePath))

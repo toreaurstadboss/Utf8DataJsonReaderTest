@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <None Remove="sample.json" />
+    <None Remove="samplewitherror.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="samplewitherror.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="sample.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

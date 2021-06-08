@@ -12,11 +12,17 @@ namespace SystemTextJsonTestRun
         {
             Console.WriteLine("Utf8JsonReader sample");
 
-            string json = Utf8JsonReaderSerializer.ReadFile("sample.json");
-            string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "json"); 
-            File.WriteAllText(tempFile, json);
-            Console.WriteLine($"Json file read and processed result in location: {tempFile}");
-            Console.WriteLine($"Json file contents: {Environment.NewLine}{json}");
+            bool isValid = Utf8JsonReaderSerializer.IsValidFile("samplewitherror.json");
+
+            bool isValidWithErrorMessage = Utf8JsonReaderSerializer.IsValidFile("samplewitherror.json", 
+                out string errorMessage);
+            Console.WriteLine(errorMessage);
+
+            //string json = Utf8JsonReaderSerializer.ReadFile("sample.json");
+            //string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "json"); 
+            //File.WriteAllText(tempFile, json);
+            //Console.WriteLine($"Json file read and processed result in location: {tempFile}");
+            //Console.WriteLine($"Json file contents: {Environment.NewLine}{json}");
 
             #region Sample implementation algorithm 
 
